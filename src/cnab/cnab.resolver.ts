@@ -1,5 +1,6 @@
 import { Resolver, Args, Mutation, Query } from '@nestjs/graphql';
 import { CnabService} from './cnab.service';
+import { FileLayoutInput } from './dto/file-layout.input';
 
 @Resolver()
 export class CnabResolver {
@@ -9,8 +10,13 @@ export class CnabResolver {
   ) {}
 
   @Query(() => String)
-  generateCnab400(): Promise<String> {
-      return this.cnabService.generateCnab400();
+  helloWorld(): String {
+    return "Hello World";
+  }
+
+  @Mutation(() => String)
+  generateCnab400(@Args({ name: 'fileLayoutInput', type: () => FileLayoutInput }) fileLayoutInput: FileLayoutInput): Promise<String> {
+    return this.cnabService.generateCnab400(fileLayoutInput);
   }
 
 }

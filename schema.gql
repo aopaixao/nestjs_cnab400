@@ -3,5 +3,91 @@
 # ------------------------------------------------------
 
 type Query {
-  generateCnab400: String!
+  helloWorld: String!
+}
+
+type Mutation {
+  generateCnab400(fileLayoutInput: FileLayoutInput!): String!
+}
+
+input FileLayoutInput {
+  headerRemessaInput: HeaderRemessaInput!
+  detalheRemessaInput: DetalheRemessaInput!
+  trailerArquivoRemessaInput: TrailerArquivoRemessaInput!
+  bancoRemessaInput: BancoRemessaInput!
+}
+
+input HeaderRemessaInput {
+  tipoRegistro: String!
+  tipoOperacao: String!
+  literalRemessa: String!
+  codigoServico: String!
+  literalServico: String!
+  codigoCedente: String!
+  razaoSocial: String!
+  codigoBanco: String!
+  nomeBanco: String!
+  dataGeracao: String!
+  brancos01: String!
+  numeroAvisoBancario: String!
+  sequencialRemessa: String!
+  brancos02: String!
+  numeroSequencial: String!
+}
+
+input DetalheRemessaInput {
+  tipoRegistro: String!
+  dadosContaPagador: String!
+  zeros01: String!
+  numeroCarteira: String!
+  agencia: String!
+  conta: String!
+  contaDv: String!
+  usoEmpresa: String!
+  zeros02: String!
+  multa: String!
+  valorMulta: String!
+  nossoNumero: String!
+  digitoNossoNumero: String!
+  descontoPorDia: String!
+  condicaoEmissao: String!
+  emissaoParaDebito: String!
+  brancos01: String!
+  zeros03: String!
+  brancos02: String!
+  codigoOcorrencia: String!
+  numeroDocumento: String!
+  vencimento: String!
+  valorTitulo: String!
+  codigoBanco: String!
+  agenciaCobradora: String!
+  especie: String!
+  aceite: String!
+  dataEmissao: String!
+  instrucao1: String!
+  instrucao2: String!
+  jurosUmDia: String!
+  descontoAte: String!
+  valorDesconto: String!
+  valorIof: String!
+  abatimento: String!
+  sacadoCodigoInscricao: String!
+  sacadoNumeroInscricao: String!
+  nome: String!
+  logradouro: String!
+  brancos03: String!
+  cep: String!
+  sacador: String!
+  numeroSequencial: String!
+}
+
+input TrailerArquivoRemessaInput {
+  tipoRegistro: String!
+  brancos01: String!
+  numeroSequencial: String!
+}
+
+input BancoRemessaInput {
+  bankCode: String!
+  cnabCode: Float!
 }
