@@ -17,15 +17,14 @@ $ npm run start:dev
 
 ## Acessando a API para geração do Código CNAB400 (GraphQL Playground)
 
-<code>
+```bash
 mutation generateCnab400($fileLayoutInput: FileLayoutInput!) {
   generateCnab400(fileLayoutInput: $fileLayoutInput) 
 }
-</code>
+
 
 # Query Variables
 
-<code>
 {
   "fileLayoutInput": {
     "headerRemessaInput":{
@@ -101,8 +100,7 @@ mutation generateCnab400($fileLayoutInput: FileLayoutInput!) {
     }
   }
 }
-</code>
-
+```
 
 ## Sobre
 
