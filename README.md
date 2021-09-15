@@ -13,6 +13,7 @@ $ npm install
 ```bash
 # development com modo watch
 $ npm run start:dev
+```
 
 ## Acessando a API para geração do Código CNAB400 (GraphQL Playground)
 
