@@ -18,6 +18,8 @@ $ npm run start:dev
 ## Acessando a API para geração do Código CNAB400 (GraphQL Playground)
 
 ```bash
+# Mutation
+
 mutation generateCnab400($fileLayoutInput: FileLayoutInput!) {
   generateCnab400(fileLayoutInput: $fileLayoutInput) 
 }
