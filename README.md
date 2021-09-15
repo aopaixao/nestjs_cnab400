@@ -1,73 +1,112 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+## Descrição
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Projeto utilizando Node.js + NesteJs para geração de arquivo de conciliação CNAB400
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
+## Instalação
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Executando a aplicação
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
+# development com modo watch
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
-```
+## Acessando a API para geração do Código CNAB400 (GraphQL Playground)
 
-## Test
+<code>
+mutation generateCnab400($fileLayoutInput: FileLayoutInput!) {
+  generateCnab400(fileLayoutInput: $fileLayoutInput) 
+}
+</code>
 
-```bash
-# unit tests
-$ npm run test
+# Query Variables
 
-# e2e tests
-$ npm run test:e2e
+<code>
+{
+  "fileLayoutInput": {
+    "headerRemessaInput":{
+      "tipoRegistro": "0",
+      "tipoOperacao": "1",
+      "literalRemessa": "REMESSA",
+      "codigoServico": "1",
+      "literalServico": "COBRANCA",
+      "codigoCedente": "12562475000132",
+      "razaoSocial": "FOO BAR LTDA",
+      "codigoBanco": "237",
+      "nomeBanco": "Bradesco",
+      "dataGeracao": "",
+      "brancos01": "",
+      "numeroAvisoBancario": "MX",
+      "sequencialRemessa": "1",
+      "brancos02": "",
+      "numeroSequencial": "1"	
+    },
+    "detalheRemessaInput":{
+      "tipoRegistro": "1",
+      "dadosContaPagador": "0000000000000000000",
+      "zeros01": "0",
+      "numeroCarteira": "000",
+      "agencia": "05633",
+      "conta": "45889785",
+      "contaDv": "0",
+      "usoEmpresa": "EMPRESA LTDA             ",
+      "zeros02": "000",
+      "multa": "0",
+      "valorMulta": "0000",
+      "nossoNumero": "00000000000",
+      "digitoNossoNumero": "0",
+      "descontoPorDia": "0000000000",
+      "condicaoEmissao": "2",
+      "emissaoParaDebito": "N",
+      "brancos01": "           ",
+      "zeros03": "0",
+      "brancos02": "  ",
+      "codigoOcorrencia": "01",
+      "numeroDocumento": "          ",
+      "vencimento": "000000",
+      "valorTitulo": "0000000000000",
+      "codigoBanco": "237",
+      "agenciaCobradora": "00000",
+      "especie": "01",
+      "aceite": "N",
+      "dataEmissao": "000000",
+      "instrucao1": "  ",
+      "instrucao2": "  ",
+      "jurosUmDia": "0000000000000",
+      "descontoAte": "000000",
+      "valorDesconto": "0000000000000",
+      "valorIof": "0000000000000",
+      "abatimento": "0000000000000",
+      "sacadoCodigoInscricao": "00",
+      "sacadoNumeroInscricao": "00000000000000",
+      "nome": "                                        ",
+      "logradouro": "                                        ",
+      "brancos03": "            ",
+      "cep": "00000000",
+      "sacador": "                                                            ",
+      "numeroSequencial": "000001"	
+    },
+    "trailerArquivoRemessaInput":{
+      "tipoRegistro": "9", 
+      "brancos01": "", 
+      "numeroSequencial": "1"
+    },
+    "bancoRemessaInput":{
+      "bankCode": "033",
+      "cnabCode": 400
+    }
+  }
+}
+</code>
 
-# test coverage
-$ npm run test:cov
-```
 
-## Support
+## Sobre
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- Author - [Alexandre Paixão]
 
-## Stay in touch
+## Licença
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+GNU GPL
